@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Friends</title>
+<link rel="stylesheet" href="styles.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+/>
+</head>
+<body>
+<header>
+  <nav class="container">
+    <img src="img/friends.jpg" alt="Logo Friends" class="logo" />
+    <ul class="nav">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#curiosidades">Curiosidades</a></li>
+      <li><a href="#episodios">Episódios</a></li>
+      <li><a href="#estilos">Estilos</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div id="acessibilidade" class="menu-acessibilidade">
+      <button id="botao-acessibilidade" aria-expanded="false">Acessibilidade</button>
+      <div id="opcoes-acessibilidade" class="opcoes-acessibilidade apresenta-lista">
+        <button id="aumentar-fonte">A+</button>
+        <button id="diminuir-fonte">A-</button>
+        <button id="alterna-contraste"><i class="bi bi-shadows"></i></button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+
+<main>
+  <!-- Início -->  <section id="inicio">
+    <div class="inicio-fundo">
+      <h1>Bem-vindo ao Mundo de Friends 🌟</h1>
+      <a href="#galeria" class="btn-inicio">Quero ver mais!</a>
+    </div>
+  </section>
+
+
+  <!-- Galeria -->
+  <section id="galeria">
+    <h2>Galeria Friends</h2>
+    <div class="grid-galeria">
+      <img src="img/portadamonica.jpg" alt="Porta da Mônica" />
+      <img src="img/elenco.jpg" alt="Elenco reunido" />
+      <img src="img/centralperk.jpg" alt="Central Perk" />
+      <img src="img/divonicos.jpg" alt="Divos lindos" />
+      <img src="img/casamentomonica.jpg" alt="Casamento Monica e Chandler" />
+    </div>
+  </section>
+
+
+  <!-- Curiosidades -->
+  <section id="curiosidades">
+    <h2>Curiosidades</h2>
+    <ul class="curiosidades-lista">
+      <li>O sofá do Central Perk é icônico e foi usado em todas as temporadas.</li>
+      <li>O nome “Friends” quase foi “Insomnia Café”.</li>
+      <li>Matthew Perry quase não fez Chandler por causa de sua agenda.</li>
+      <li>O apartamento de Monica e Rachel mudou de layout no início da série.</li>
+      <li>O café Central Perk não existe na vida real, mas virou ponto turístico.</li>
+    </ul>
+  </section>
+
+
+  <!-- Episódios -->
+  <section id="episodios">
+    <h2>Episódios Marcantes</h2>
+    <ol class="episodios-lista">
+      <li>The One Where Ross Finds Out</li>
+      <li>The One With The Embryos</li>
+      <li>The One With The Prom Video</li>
+      <li>The One With All The Thanksgivings</li>
+      <li>The Last One</li>
+    </ol>
+  </section>
+
+
+  <!-- Estilos -->
+  <section id="estilos">
+    <h2>Estilos dos Personagens</h2>
+    <div class="estilos-grid">
+      <div class="personagem">
+        <img src="img/rachelstyle.jpg" alt="Rachel Green" />
+        <p>Rachel: Fashionista e trendsetter da turma.</p>
+      </div>
+      <div class="personagem">
+        <img src="img/monicastyle.jpg" alt="Monica Geller" />
+        <p>Monica: Organizada e clássica.</p>
+      </div>
+      <div class="personagem">
+        <img src="img/rossstyle.jpg" alt="Ross Geller" />
+        <p>Ross: Casual nerd e amante de dinossauros.</p>
+      </div>
+      <div class="personagem">
+        <img src="img/joeystyle.jpg" alt="Joey Tribbiani" />
+        <p>Joey: Estilo descontraído e charmoso.</p>
+      </div>
+      <div class="personagem">
+        <img src="img/phoebestyle.jpg" alt="Phoebe Buffay" />
+        <p>Phoebe: Boho, excêntrica e divertida.</p>
+      </div>
+      <div class="personagem">
+        <img src="img/chandlerstyle.jpg" alt="Chandler Bing" />
+        <p>Chandler: Casual com um toque sarcástico.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Quiz -->
+  <section id="quiz">
+    <h2>Quiz de Friends 🎉</h2>
+    <div id="quiz-container">
+      <div class="quiz-decor">
+        <img src="img/sofa.png" alt="Sofá Central Perk" class="quiz-sofa">
+        <img src="img/caneca.png" alt="Caneca" class="quiz-caneca">
+      </div>
+      <p id="question" class="quiz-question"></p>
+      <div id="options" class="quiz-options"></div>
+      <button id="next-btn" class="btn-next">Próxima ❯</button>
+      <p id="result" class="quiz-result"></p>
+    </div>
+  </section>
+
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="formulario">
+      <h2>Entrar em Contato</h2>
+      <form>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Digite seu nome" />
+
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="Digite seu e-mail" />
+
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" rows="4" placeholder="Escreva sua mensagem"></textarea>
+
+
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+
+<footer>
+  <p>Acesse nossas redes:</p>
+  <i class="bi bi-whatsapp"></i>
+  <i class="bi bi-instagram"></i>
+  <i class="bi bi-tiktok"></i>
+  <p>Projeto fictício inspirado em Friends.</p>
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+<section id="quiz">
+    <h2>Quiz Friends 🎉</h2>
+    <div class="quiz-container">
+      <p id="question">Pergunta aparecerá aqui</p>
+      <div id="options" class="quiz-options">
+        <!-- Botões das opções serão criados pelo JS -->
+      </div>
+      <button id="next-btn" class="btn-next">Próxima pergunta</button>
+      <p id="result"></p>
+    </div>
+  </section>
+  <script src="script.js"></script>
+
+
+
+
+
+
+
+
+
+
+
