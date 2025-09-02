@@ -212,6 +212,113 @@ function showFinalResult() {
 }
 
 nextButton.addEventListener("click", nextQuestion);
+<section id="quiz">
+    <h2>Quiz Friends 🎉</h2>
+    <div class="quiz-container">
+      <p id="question">Pergunta aparecerá aqui</p>
+      <div id="options" class="quiz-options">
+        <!-- Botões das opções serão criados pelo JS -->
+      </div>
+      <button id="next-btn" class="btn-next">Próxima pergunta</button>
+      <p id="result"></p>
+      const questions = [
+  {
+    question: "Qual é o nome do café onde os amigos sempre se encontram?",
+    options: ["Central Coffee", "Central Park", "Central Perk", "Friends Café"],
+    answer: 2
+  },
+  {
+    question: "Qual profissão de Ross?",
+    options: ["Advogado", "Paleontólogo", "Médico", "Professor de História"],
+    answer: 1
+  },
+  {
+    question: "Quem canta 'Smelly Cat'?",
+    options: ["Rachel", "Phoebe", "Monica", "Janice"],
+    answer: 1
+  },
+  {
+    question: "Com quem Chandler se casa?",
+    options: ["Rachel", "Phoebe", "Janice", "Monica"],
+    answer: 3
+  },
+  {
+    question: "Qual personagem é ator?",
+    options: ["Ross", "Joey", "Gunther", "Mike"],
+    answer: 1
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionElement = document.getElementById("question");
+const optionsContainer = document.getElementById("options");
+const nextButton = document.getElementById("next-btn");
+const resultElement = document.getElementById("result");
+
+function loadQuestion() {
+  const current = questions[currentQuestion];
+  questionElement.textContent = current.question;
+  optionsContainer.innerHTML = "";
+
+  current.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.textContent = option;
+    button.classList.add("option-btn");
+    button.onclick = () => selectOption(index);
+    optionsContainer.appendChild(button);
+  });
+
+  nextButton.style.display = "none";
+  resultElement.textContent = "";
+}
+
+function selectOption(index) {
+  const current = questions[currentQuestion];
+  const buttons = document.querySelectorAll(".option-btn");
+
+  buttons.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === current.answer) {
+      btn.classList.add("correct");
+    }
+    if (i === index && i !== current.answer) {
+      btn.classList.add("wrong");
+    }
+  });
+
+  if (index === current.answer) {
+    score++;
+    resultElement.textContent = "✅ Resposta certa!";
+  } else {
+    resultElement.textContent = "❌ Resposta errada!";
+  }
+
+  nextButton.style.display = "block";
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    loadQuestion();
+  } else {
+    showFinalResult();
+  }
+}
+
+function showFinalResult() {
+  questionElement.textContent = "Fim do Quiz! 🎉";
+  optionsContainer.innerHTML = "";
+  nextButton.style.display = "none";
+  resultElement.textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
+}
+
+nextButton.addEventListener("click", nextQuestion);
+
+// iniciar quiz
+loadQuestion();
+
 
 // iniciar quiz
 loadQuestion();
