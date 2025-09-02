@@ -118,67 +118,104 @@ body {
     margin-top: 0.5rem;
   }
  
-  /* Quiz */
-  #quiz-container {
-    background-color: #222;
-    border: 3px solid #ffcc00;
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    position: relative;
-    margin: 1rem;
+  const questions = [
+  {
+    question: "Qual é o nome do café onde os amigos sempre se encontram?",
+    options: ["Central Coffee", "Central Park", "Central Perk", "Friends Café"],
+    answer: 2
+  },
+  {
+    question: "Qual profissão de Ross?",
+    options: ["Advogado", "Paleontólogo", "Médico", "Professor de História"],
+    answer: 1
+  },
+  {
+    question: "Quem canta 'Smelly Cat'?",
+    options: ["Rachel", "Phoebe", "Monica", "Janice"],
+    answer: 1
+  },
+  {
+    question: "Com quem Chandler se casa?",
+    options: ["Rachel", "Phoebe", "Janice", "Monica"],
+    answer: 3
+  },
+  {
+    question: "Qual personagem é ator?",
+    options: ["Ross", "Joey", "Gunther", "Mike"],
+    answer: 1
   }
- 
-  .quiz-question {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: #ffcc00;
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionElement = document.getElementById("question");
+const optionsContainer = document.getElementById("options");
+const nextButton = document.getElementById("next-btn");
+const resultElement = document.getElementById("result");
+
+function loadQuestion() {
+  const current = questions[currentQuestion];
+  questionElement.textContent = current.question;
+  optionsContainer.innerHTML = "";
+
+  current.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.textContent = option;
+    button.classList.add("option-btn");
+    button.onclick = () => selectOption(index);
+    optionsContainer.appendChild(button);
+  });
+
+  nextButton.style.display = "none";
+  resultElement.textContent = "";
+}
+
+function selectOption(index) {
+  const current = questions[currentQuestion];
+  const buttons = document.querySelectorAll(".option-btn");
+
+  buttons.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === current.answer) {
+      btn.classList.add("correct");
+    }
+    if (i === index && i !== current.answer) {
+      btn.classList.add("wrong");
+    }
+  });
+
+  if (index === current.answer) {
+    score++;
+    resultElement.textContent = "✅ Resposta certa!";
+  } else {
+    resultElement.textContent = "❌ Resposta errada!";
   }
- 
-  .quiz-options button {
-    display: block;
-    margin: 0.5rem auto;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    background-color: #555;
-    color: #fff;
-    transition: 0.3s;
+
+  nextButton.style.display = "block";
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    loadQuestion();
+  } else {
+    showFinalResult();
   }
- 
-  .quiz-options button:hover {
-    background-color: #ffcc00;
-    color: #000;
-    transform: scale(1.1);
-  }
- 
-  .btn-next {
-    margin-top: 1rem;
-    background-color: #ffcc00;
-    color: #000;
-    border: none;
-    border-radius: 10px;
-    padding: 0.5rem 1.5rem;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-  }
- 
-  .btn-next:hover {
-    background-color: #fff;
-    color: #ffcc00;
-    transform: scale(1.1);
-  }
- 
-  .quiz-result {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 1rem;
-  }
- 
+}
+
+function showFinalResult() {
+  questionElement.textContent = "Fim do Quiz! 🎉";
+  optionsContainer.innerHTML = "";
+  nextButton.style.display = "none";
+  resultElement.textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
+}
+
+nextButton.addEventListener("click", nextQuestion);
+
+// iniciar quiz
+loadQuestion();
+
   /* Decoração quiz */
   .quiz-decor {
     position: relative;
